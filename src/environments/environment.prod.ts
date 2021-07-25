@@ -1,3 +1,10 @@
 export const environment = {
-  production: true
+
+  production: true,
+
+  title: 'Production Environment Heading',
+
+  apiURL: 'https://working-store.herokuapp.com/'
+
 };
+
