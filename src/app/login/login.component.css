@@ -1,0 +1,50 @@
+#bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+}
+
+.split {
+  height: 100%;
+  width: 50%;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+  text-align: center;
+}
+
+/* Control the left side */
+.left {
+  left: 0;
+  /*background-color: #111;*/
+}
+
+.right {
+  right: 0;
+  /*background-image: url('src/assets/images/86253058557d476c91cbc4982afcff2d.png');*/
+  background-color: black;
+  background-repeat: no-repeat;
+  /*position: absolute;*/
+  /*background-attachment: fixed;*/
+  /*!*background-size: cover;*!*/
+  /*!*background-size:  100% 100%;*!*/
+  /*background-position: right top, left bottom;*/
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+
+}
+
+/* Style the image inside the centered container, if needed */
+.centered img {
+  width: 150px;
+  border-radius: 50%;
+}

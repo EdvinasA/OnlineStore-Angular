@@ -1,0 +1,56 @@
+<ng-container *ngIf="storages; else none">
+  <div class="card">
+
+    <div class="card-header">
+      {{pageTitle}}
+      <label for="storageDate">on </label>
+      <input type="date" [(ngModel)]="date"
+             (focusout)="getAllProductQuantityOnDate()"
+             class="form-control"
+             id="storageDate"
+             name="storageDate"
+             placeholder="Date"
+             required #storageDate="ngModel">
+    </div>
+
+    <div class="card-body">
+
+      <div class="table-responsive">
+        <table class="table">
+
+          <thead>
+            <tr>
+              <th></th>
+              <th>Title</th>
+              <th>ID</th>
+              <th>Quantity</th>
+              <th>Additional</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let storage of storages">
+              <td></td>
+              <td>{{storage.product.title}}</td>
+              <td>{{storage.product.id}}</td>
+              <td>{{storage.quantity}}</td>
+              <td>
+                <div class="quantity">
+                  <input #quantity class="quantity" type="number"  placeholder="Enter and step out" tool (focusout)="updateStorage(storage.product.id, quantity.valueAsNumber)">
+
+                </div>
+              </td>
+            </tr>
+          </tbody>
+
+        </table>
+      </div>
+
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #none>
+  <div>There is no products in the system</div>
+</ng-template>
+

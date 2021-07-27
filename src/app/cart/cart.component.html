@@ -1,0 +1,79 @@
+<ng-template #elseBlock>
+  <br>
+  <br>
+  <br>
+  Cart is empty !
+</ng-template>
+
+<ng-container *ngIf="carts.length; else elseBlock">
+  <ng-template #elseBlock>
+    Content to render when condition is false.
+  </ng-template>
+  <div class="card">
+    <div class="card-header">
+      {{pageTitle}}
+      <button *ngIf="!checkIfAmountOfProductsIsInStorageAtAll()" class='btn btn-outline-secondary'
+              style='width:135px'
+              (click)='createOrder()'>
+        <i class='fa fa-chevron-left'></i> Create Order
+      </button>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+          <tr>
+            <th>Title</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Cost</th>
+            <th></th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <tr *ngFor="let cart of carts">
+            <td>{{cart.product.title}}</td>
+            <td>
+
+              <div class="quantity" >
+                <div>
+                <button class="btn minus1" (click)="onSubtract(cart)" *ngIf="cart.quantity != 0">-</button>
+                </div>
+                <div>
+                <input class="quantity" id="id_form-0-quantity" min="0" name="form-0-quantity" value="{{ cart.quantity }}" type="number">
+                </div>
+                <div>
+                <button class="btn add1" (click)="onAdd(cart)">+</button>
+                </div>
+              </div>
+              <div *ngIf="!checkIfAmountOfProductsIsInStorage(cart)" class="on-top"><p>Not enough products in storage</p></div>
+            </td>
+            <td>{{cart.product.price | currency: "EUR"}}</td>
+            <td>{{cart.product.price * cart.quantity | currency: "EUR"}}</td>
+            <td><button class="btn btn-danger btn-sm rounded-0"
+                        type="button"
+                        data-toggle="tooltip"
+                        data-placement="top"
+                        title="Delete one product from cart" (click)="onDelete(cart)"><i class="fa fa-trash"></i></button></td>
+          </tr>
+          </tbody>
+
+          <tfoot>
+          <tr>
+            <td>Total Cost:</td>
+            <td></td>
+            <td></td>
+            <td>{{totalPrice | currency: "EUR"}}</td>
+          </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #none>
+  <div>There is no products in the cart</div>
+</ng-template>
+

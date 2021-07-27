@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {IProduct} from "./product";
 import {ProductService} from "./product.service";
-import {Products} from "./products";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {CartService} from "../cart/cart.service";
 import {Subscription} from "rxjs";

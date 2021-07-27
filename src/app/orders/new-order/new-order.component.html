@@ -1,0 +1,48 @@
+<div class="card my-5">
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+      <div class="form-group">
+        <label for="orderDate">Date</label>
+        <input type="date" [(ngModel)]="date"
+               class="form-control"
+               id="orderDate"
+               name="orderDate"
+               required #orderDate="ngModel">
+      </div>
+      <div class="form-group">
+        <label for="userName">Name</label>
+        <input type="text" [(ngModel)]="order.userName"
+               class="form-control"
+               id="userName"
+               name="userName"
+               placeholder="Enter your name"
+               required #userName="ngModel">
+      </div>
+      <div class="form-group">
+        <label for="userSurname">Surname</label>
+        <input type="text" [(ngModel)]="order.userSurname"
+               class="form-control"
+               id="userSurname"
+               name="userSurname"
+               placeholder="Enter your surname"
+               required #userSurname="ngModel">
+      </div>
+      <div class="form-group">
+        <label for="deliveryAddress">Delivery address</label>
+        <input type="text" [(ngModel)]="order.deliveryAddress"
+               class="form-control"
+               id="deliveryAddress"
+               name="deliveryAddress"
+               placeholder="Enter delivery address"
+               required #deliveryAddress="ngModel">
+      </div>
+      <div>
+        <br>
+      </div>
+      <button type="submit" [disabled]="!userForm.form.valid"
+              class="btn btn-info">Create</button>
+    </form>
+
+  </div>
+  <app-cart [isNewOrder]="true"></app-cart>
+</div>

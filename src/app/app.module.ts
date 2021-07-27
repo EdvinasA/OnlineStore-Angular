@@ -19,6 +19,18 @@ import {RouterModule} from "@angular/router";
 import {ProductDetailGuard} from "./products/product-detail.guard";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {AngularMaterialModule} from "./shared/angular-material.module";
+import {CartComponent} from "./cart/cart.component";
+import {WelcomeComponent} from "./home/welcome.component";
+import {LoginComponent} from "./login/login.component";
+import {NewOrderComponent} from "./orders/new-order/new-order.component";
+import {OrderComponent} from "./orders/order/order.component";
+import {OrderLinesComponent} from "./orders/order-lines/order-lines.component";
+import {OrdersComponent} from "./orders/orders.component";
+import {ProfileComponent} from "./profile/profile.component";
+import {RegisterComponent} from "./register/register.component";
+import {RegisterAdminComponent} from "./register-admin/register-admin.component";
+import {StorageComponent} from "./storage/storage.component";
+import {UsersComponent} from "./users/users.component";
 
 @NgModule({
   declarations: [
@@ -26,7 +38,19 @@ import {AngularMaterialModule} from "./shared/angular-material.module";
     ProductListComponent,
     ProductFormComponent,
     ProductDetailComponent,
-    ProductEditingComponent
+    ProductEditingComponent,
+    CartComponent,
+    WelcomeComponent,
+    LoginComponent,
+    NewOrderComponent,
+    OrderComponent,
+    OrderLinesComponent,
+    OrdersComponent,
+    ProfileComponent,
+    RegisterComponent,
+    RegisterAdminComponent,
+    StorageComponent,
+    UsersComponent
   ],
   imports: [
     CommonModule,

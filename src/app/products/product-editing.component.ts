@@ -1,9 +1,6 @@
-import {Component, Inject, OnInit, Optional, ViewChild} from "@angular/core";
-import {MatTable} from "@angular/material/table";
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
-import {IProduct} from "./product";
+import {Component, Inject, OnInit, Optional} from "@angular/core";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {Products} from "./products";
-
 
 @Component({
   templateUrl: './product-editing.component.html',

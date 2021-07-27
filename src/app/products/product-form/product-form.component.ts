@@ -3,7 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {ProductService} from "../product.service";
 import {Products} from "../products";
 import {productType} from "./productType";
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 
 @Component({
@@ -21,8 +21,6 @@ export class ProductFormComponent implements OnInit {
   message!: string;
   imageName!: any;
 
-
-
   constructor(private route: ActivatedRoute,
               private router: Router,
               private productService: ProductService,
@@ -30,7 +28,6 @@ export class ProductFormComponent implements OnInit {
               private httpClient: HttpClient) {
               this.products = new class extends Products {};
   }
-
 
   productTypes: productType[] = [
     { id: "COMPUTER", title: "Computer" },
@@ -50,9 +47,7 @@ export class ProductFormComponent implements OnInit {
   }
 
   public onFileChanged(event: any) {
-
     this.selectedFile = event.target.files[0];
-
   }
 
   onUpload() {

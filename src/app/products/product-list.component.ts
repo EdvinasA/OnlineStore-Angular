@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit, ViewChild} from "@angular/core";
+import {Component, OnDestroy, OnInit} from "@angular/core";
 import { Subscription } from "rxjs";
 import {IProduct} from "./product";
 import {ProductService} from "./product.service";
@@ -8,7 +8,6 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {ProductEditingComponent} from "./product-editing.component";
 import {MatDialog} from "@angular/material/dialog";
 import {LoginService} from "../login/login.service";
-
 
 @Component({
   templateUrl: './product-list.component.html',

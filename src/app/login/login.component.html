@@ -1,0 +1,60 @@
+
+<div class="split left">
+<!--  <mat-tab-group mat-tabs class="example-container">-->
+<!--    <mat-tab label="Login">-->
+<div class="centered">
+    <mat-card class="box">
+      <mat-card-header>
+        <mat-card-title>Sign In</mat-card-title>
+      </mat-card-header>
+      <mat-card class="box">
+<form class="example-form" name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+  <mat-card-content>
+  <mat-form-field class="example-full-width">
+  <div [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+    <input matInput placeholder="Username"
+      type="text"
+           name="username" [(ngModel)]="model.userName"
+           #username="ngModel" required />
+    <span>
+    <div *ngIf="f.submitted
+          && !username.valid"></div>
+      </span>
+  </div>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+  <div [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+    <input matInput placeholder="Password"
+           type="password"
+           name="password" [(ngModel)]="model.password"
+           #password="ngModel" required />
+  </div>
+  </mat-form-field>
+  </mat-card-content>
+
+          <div>
+              <button mat-stroked-button color="blue" class="btn-block" [disabled]="loading" >Login</button>
+          </div>
+        </form>
+      </mat-card>
+      <br>
+      Not registered ? <button mat-raised-button (click)="openDialog()">Register</button>
+    </mat-card>
+</div>
+
+<div style="text-align: center">
+  <footer id="bottom">© 2020-2021 Edvinas Alimas. All rights reserved.</footer>
+</div>
+<!--    </mat-tab>-->
+<!--    <mat-tab label="Register"> Stuff</mat-tab>-->
+<!--  </mat-tab-group>-->
+</div>
+
+<div class="split right">
+  <div class="centered">
+    <img src="assets/images/86253058557d476c91cbc4982afcff2d.png">
+  </div>
+</div>
+
+
+
