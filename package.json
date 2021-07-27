@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "webpack-dev-server --mode development --hot --open --port $PORT",
+    "start": "webpack serve --mode=development --hot --open --port $PORT",
     "build": "npm i -dev && webpack --mode production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
