@@ -31,6 +31,7 @@ import {RegisterComponent} from "./register/register.component";
 import {RegisterAdminComponent} from "./register-admin/register-admin.component";
 import {StorageComponent} from "./storage/storage.component";
 import {UsersComponent} from "./users/users.component";
+import {UsersGuardGuard} from "./users/users-guard.guard";
 
 @NgModule({
   declarations: [
@@ -69,13 +70,13 @@ import {UsersComponent} from "./users/users.component";
     AngularMaterialModule,
     RouterModule.forRoot([
       {path: '', pathMatch: 'full', redirectTo: 'login'},
-      // {path: 'login', component: LoginComponent},
-      // {path: 'register', component: RegisterComponent},
-      // {
-      //   path: 'welcome', component: WelcomeComponent
-      // },
+      {path: 'login', component: LoginComponent},
+      {path: 'register', component: RegisterComponent},
+      {
+        path: 'welcome', component: WelcomeComponent
+      },
       {path: 'add-product', component: ProductFormComponent,
-        // canActivate: [UsersGuardGuard]
+        canActivate: [UsersGuardGuard]
       },
       {path: 'products', component: ProductListComponent},
       {
@@ -83,34 +84,34 @@ import {UsersComponent} from "./users/users.component";
         canActivate: [ProductDetailGuard],
         component: ProductDetailComponent
       },
-      // {
-      //   path: 'cart', component: CartComponent
-      // },
-      // {
-      //   path: 'orders', component: OrdersComponent
-      // },
-      // {
-      //   path: 'order/:id',
-      //   component: OrderComponent
-      // },
-      // {
-      //   path: 'orders/new', component: NewOrderComponent
-      // },
-      // {
-      //   path: 'storage', component: StorageComponent,
-      //   canActivate: [UsersGuardGuard]
-      // },
-      // {
-      //   path: 'users', component: UsersComponent,
-      //   canActivate: [UsersGuardGuard]
-      // },
-      // {
-      //   path: 'register-admins', component: RegisterAdminComponent,
-      //   canActivate: [UsersGuardGuard]
-      // },
-      // {
-      //   path:'profile/:id', component: ProfileComponent
-      // },
+      {
+        path: 'cart', component: CartComponent
+      },
+      {
+        path: 'orders', component: OrdersComponent
+      },
+      {
+        path: 'order/:id',
+        component: OrderComponent
+      },
+      {
+        path: 'orders/new', component: NewOrderComponent
+      },
+      {
+        path: 'storage', component: StorageComponent,
+        canActivate: [UsersGuardGuard]
+      },
+      {
+        path: 'users', component: UsersComponent,
+        canActivate: [UsersGuardGuard]
+      },
+      {
+        path: 'register-admins', component: RegisterAdminComponent,
+        canActivate: [UsersGuardGuard]
+      },
+      {
+        path:'profile/:id', component: ProfileComponent
+      },
       {path: '', redirectTo: 'welcome', pathMatch: 'full'},
       {path: '**', redirectTo: 'welcome', pathMatch: 'full'}
     ]),
