@@ -1,0 +1,94 @@
+<div class="container row">
+  <div class="col-md-12">
+<!--    <h1>Upload Image</h1>-->
+<!--  </div>-->
+<!--</div>-->
+<!--<div class="container row">-->
+<!--  <div class="col-md-6">-->
+<!--    <input type="file" (change)="onFileChanged($event)">-->
+<!--  </div>-->
+<!--  <div class="col-md-6">-->
+<!--    <input type="button" (click)="onUpload()" value="upload">-->
+<!--  </div>-->
+<!--</div>-->
+<!--<hr />-->
+<!--<div class="container row">-->
+<!--  <div class="col-md-12">-->
+<!--    <div *ngIf=message>{{message}}</div>-->
+<!--  </div>-->
+<!--</div>-->
+<!--<div class="container row">-->
+<!--  <div class="col-md-6">-->
+<!--    <input type="text" class="form-control" id="name" placeholder="image name" [(ngModel)]="imageName"-->
+<!--   name="name" />-->
+<!--  </div>-->
+<!--  <div class="col-md-6">-->
+<!--    <input type="button" (click)="getImage()" value="Get Image">-->
+<!--  </div>-->
+<!--</div>-->
+<!--<div class="container row">-->
+<!--  <div class="col-md-12">-->
+<!--    <div *ngIf=retrievedImage>-->
+<!--      <img [src]="retrievedImage">-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+
+
+
+    <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+
+      <mat-form-field appearance="fill">
+        <mat-label>Image Url</mat-label>
+        <input matInput [(ngModel)]="products.imageUrl"
+               id="imageUrl"
+               name="imageUrl"
+               placeholder="Enter image url"
+               required #imageUrl="ngModel">
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill">
+        <mat-label>Product name</mat-label>
+        <input matInput [(ngModel)]="products.title"
+               id="title"
+               name="title"
+               placeholder="Enter title"
+               required #title="ngModel">
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill">
+        <mat-label>Price</mat-label>
+        <input matInput type="number" class="example-right-align" placeholder="0"
+               [(ngModel)]="products.price"
+               id="price"
+               name="price"
+               placeholder="Enter price"
+               required #description="ngModel">
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill">
+        <mat-label>Select type</mat-label>
+        <mat-select name="type" [(ngModel)]="products.type"
+               id="type"
+                placeholder="Select type"
+                required #type="ngModel">
+          <mat-option *ngFor="let types of productTypes" value="types.id">{{types.title}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill">
+        <mat-label>Textarea</mat-label>
+        <textarea matInput [(ngModel)]="products.description"
+               id="description"
+               name="description"
+               placeholder="Enter description"
+                  required #description="ngModel"> </textarea>
+      </mat-form-field>
+      <br>
+      <button type="submit" [disabled]="!userForm.form.valid"
+              class="btn btn-info">Save</button>
+    </form>
+  </div>
+</div>
+

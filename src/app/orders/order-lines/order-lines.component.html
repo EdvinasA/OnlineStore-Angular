@@ -1,0 +1,47 @@
+<ng-container *ngIf="orderLines; else none">
+  <div class="card">
+    <div class="card-header">
+      {{pageTitle}}
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+          <tr>
+            <th></th>
+            <th>Title</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Cost</th>
+
+          </tr>
+          </thead>
+
+          <tbody>
+          <tr *ngFor="let orderLine of orderLines">
+            <td></td>
+            <td>{{orderLine.product.title}}</td>
+            <td>{{orderLine.quantity}}</td>
+            <td>{{orderLine.product.price | currency: "EUR"}}</td>
+            <td>{{orderLine.product.price * orderLine.quantity | currency: "EUR"}}</td>
+          </tr>
+          </tbody>
+
+          <tfoot>
+          <tr>
+            <td>Total Cost:</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>{{orderTotalCost | currency: "EUR"}}</td>
+          </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #none>
+  <div>There is no products in the order</div>
+</ng-template>
