@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnDestroy, OnInit} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {LoginService} from "./login.service";
@@ -6,6 +6,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {RegisterComponent} from "../register/register.component";
 import {UserInterface} from "./user.interface";
 import {environment} from "../../environments/environment";
+import {Subscription} from "rxjs";
 
 
 @Component({
@@ -14,7 +15,7 @@ import {environment} from "../../environments/environment";
   styleUrls: ['./login.component.css']
 })
 
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
 
   model: any = {};
   loading: any;
@@ -26,7 +27,7 @@ export class LoginComponent implements OnInit {
   password!: string;
   role!: string;
   users: UserInterface[] = [];
-
+  subscription!: Subscription;
 
 
   errorMessage = 'Invalid Credentials';
@@ -37,7 +38,9 @@ export class LoginComponent implements OnInit {
     private http: HttpClient,
     public dialog: MatDialog,
     private loginService: LoginService
-  ) { }
+  ) {
+    //
+  }
 
 
   ngOnInit() {
@@ -60,7 +63,7 @@ export class LoginComponent implements OnInit {
               email: this.email,
               age: this.age
       }
-    });
+    }).afterClosed().subscribe(() => this.router.navigate([this.router.url]));
   }
 
 
@@ -106,5 +109,9 @@ export class LoginComponent implements OnInit {
           }
         }
       });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription?.unsubscribe();
   }
 }

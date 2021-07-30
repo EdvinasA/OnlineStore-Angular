@@ -2,6 +2,7 @@ import {Component,  OnInit} from "@angular/core";
 import {MatDialogRef} from "@angular/material/dialog";
 import {LoginService} from "../login/login.service";
 import {FormBuilder,FormGroup, Validators} from "@angular/forms";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -35,7 +36,6 @@ export class RegisterComponent implements OnInit{
   onNoClick(): void {
     this.loginService.registerUser(this.registerForm.value).subscribe(result => this.nothing);
     this.dialogRef.close();
-    window.location.reload();
   }
   onClose(): void {
     this.dialogRef.close();

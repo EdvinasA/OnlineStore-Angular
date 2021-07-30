@@ -63,7 +63,16 @@ export class LoginService {
   }
 
   public registerUser(newUser: RegisterInterface) {
-    return this.http.post<RegisterInterface>(this.registerNewUserUrl, newUser);
+    let user = {
+      firstName: newUser.firstName,
+      lastName: newUser.lastName,
+      age: newUser.age,
+      email: newUser.email,
+      userName: newUser.userName,
+      password: newUser.password,
+      role: 'USER'
+    }
+    return this.http.post<RegisterInterface>(this.registerNewUserUrl, user);
   }
 
   public registerAdmin(newUser: RegisterInterface) {
