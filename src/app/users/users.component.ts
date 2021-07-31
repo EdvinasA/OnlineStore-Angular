@@ -12,7 +12,7 @@ import {RegisterAdminComponent} from "../register-admin/register-admin.component
 export class UsersComponent implements OnInit {
 
   pageTitle = 'Users';
-  displayedColumns: string[] = ['userId', 'userName', 'password', 'first-name', 'last-name','age', 'email', 'role'];
+  displayedColumns: string[] = ['userId', 'userName', 'password', 'first-name', 'last-name','age', 'email', 'role', 'delete'];
   users: UserInterface[] = [];
   p: number = 1;
   role!: string | null;
@@ -22,6 +22,7 @@ export class UsersComponent implements OnInit {
   email!: string;
   userName!: string;
   password!: string;
+  errorMessage = "";
 
   constructor(private loginService: LoginService,
               public dialog: MatDialog) { }
@@ -42,6 +43,16 @@ export class UsersComponent implements OnInit {
         role: this.role
       }
     });
+  }
+
+  deleteUserById(userId: number): void {
+    this.loginService.deleteUserById(userId)
+      .subscribe({
+        next: message => {
+          message = "Delete succesfull"
+        },
+        error: err => this.errorMessage = err
+      });
   }
 
 }
