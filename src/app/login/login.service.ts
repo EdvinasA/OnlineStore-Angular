@@ -14,6 +14,7 @@ export class LoginService {
   private registerNewUserUrl = this.baseUrl + "register-user";
   private registerNewAdminUrl = this.baseUrl + "register-admin";
   private getLoggedPersonInRoleUrl = this.baseUrl + "find-all-users";
+  private deleteUserUrl = this.baseUrl + "user/";
 
   private isLoggedSource = new BehaviorSubject('false');
   currentLoggedStatus = this.isLoggedSource.asObservable();
@@ -58,6 +59,10 @@ export class LoginService {
     sessionStorage.setItem('isLogged', 'false');
   }
 
+  public deleteUserById(id: number) {
+    return this.http.delete(this.deleteUserUrl + id);
+  }
+
   public getAllUsers(): Observable<UserInterface[]> {
     return this.http.get<UserInterface[]>(this.getLoggedPersonInRoleUrl)
   }
@@ -78,4 +83,6 @@ export class LoginService {
   public registerAdmin(newUser: RegisterInterface) {
     return this.http.post<RegisterInterface>(this.registerNewAdminUrl, newUser);
   }
+
+
 }
