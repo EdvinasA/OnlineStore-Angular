@@ -46,6 +46,7 @@ export class UsersComponent implements OnInit {
   }
 
   deleteUserById(userId: number): void {
+    this.users = this.users.filter(item => item.id !== userId);
     this.loginService.deleteUserById(userId)
       .subscribe({
         next: message => {
