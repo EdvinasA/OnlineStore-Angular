@@ -6,9 +6,6 @@ import {ProductService} from "../products/product.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {LoginService} from "../login/login.service";
 import {Subscription} from "rxjs";
-import {StorageService} from "../storage/storage.service";
-import {IStorage} from "../storage/storage.interface";
-
 
 @Component({
   selector: 'app-cart',
@@ -24,24 +21,18 @@ export class CartComponent implements OnInit {
   quantity = 0;
   private userId!: string | null;
   private subscription!: Subscription;
-  productAmountInCart!: number;
-  disableButton: boolean = true;
-  productQuantity!: IStorage;
 
   carts: Cart[] = [] ;
-  storage: IStorage[] = [];
 
   constructor(
     private cartService: CartService,
     private router: Router,
     private productService: ProductService,
     private _snackBar: MatSnackBar,
-    private loginService: LoginService,
-    private storageService: StorageService
+    private loginService: LoginService
     ) {}
 
   ngOnInit(): void {
-    this.storageService.getAllProductQuantity().subscribe(storage => this.storage = storage);
     this.subscription = this.loginService.currentUserIdStatus.subscribe(setId => this.userId = setId)
     this.userId = sessionStorage.getItem('userId');
     this.cartService.getCart(this.userId).subscribe({
@@ -119,31 +110,21 @@ export class CartComponent implements OnInit {
     this.router.navigate(['orders/new']);
   }
 
-  checkIfAmountOfProductsIsInStorageAtAll(): boolean {
-      for (let j = 0; j < this.carts.length; j++) {
-        for (let i = 0; i < this.storage.length; i++) {
-          if (this.storage[i].product.id === this.carts[i].product.id) {
-            if (this.storage[i].quantity >= this.carts[j].quantity) {
-              console.log("Hello")
-              return false;
-            }
-            if (this.storage[i].quantity < this.carts[j].quantity) {
-              return true;
-            }
-          }
-        }
-    }
-  return false;
-  }
+  // checkIfAmountOfProductsIsInStorageAtAll(): boolean {
+  //     for (let j = 0; j < this.carts.length; j++) {
+  //       for (let i = 0; i < this.storage.length; i++) {
+  //         if (this.storage[i].product.id === this.carts[i].product.id) {
+  //           if (this.storage[i].quantity >= this.carts[j].quantity) {
+  //             console.log("Hello")
+  //             return false;
+  //           }
+  //           if (this.storage[i].quantity < this.carts[j].quantity) {
+  //             return true;
+  //           }
+  //         }
+  //       }
+  //   }
+  // return false;
+  // }
 
-  checkIfAmountOfProductsIsInStorage(cart: Cart): boolean {
-    for (let i = 0; i < this.storage.length; i++) {
-      if (cart.product.id == this.storage[i].product.id) {
-        if ( this.storage[i].quantity >= cart.quantity) {
-          return true;
-        }
-      }
-    }
-    return false;
-  }
 }

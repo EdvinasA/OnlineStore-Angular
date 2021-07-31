@@ -31,7 +31,6 @@ export class ProductListComponent implements OnInit, OnDestroy{
 }
   set listFilter(value: string){
     this._listFilter = value
-    console.log('In setter: ',value);
     this.filteredProducts = this.performFilter(value);
   }
 
