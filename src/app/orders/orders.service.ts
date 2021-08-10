@@ -48,7 +48,7 @@ export class OrdersService {
   }
 
   public createOrderLinesFromCart(orderId: number) {
-    return this.http.post<any>(this.baseUrl + "purchase/order/lines/moveFromCart?purchase_order_id="+orderId, "{purchase_order_id: orderId}");
+    return this.http.post<any>(this.baseUrl + "purchase/order/lines/" + this.userId, orderId);
   }
 
 }
